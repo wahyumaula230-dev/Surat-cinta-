@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our Love Story 💗</title>
+<script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;font-family:"Segoe UI",Arial,sans-serif;color:#813553;
+ background:linear-gradient(145deg,#ffe0ee,#fff8fc,#f2ddff);
+ min-height:100vh
+}
+button{border:0;cursor:pointer;font-size:15px}
+.wrap{max-width:600px;margin:auto;padding:16px}
+header{text-align:center;padding:14px}
+header h1{font-size:28px}
+header p,.small{color:#b16a8a;font-size:13px;line-height:1.7}
+.card{
+ background:#ffffffdf;padding:23px 18px;border-radius:25px;
+ box-shadow:0 10px 35px #d97da526;text-align:center;margin:12px 0
+}
+.page{display:none;animation:show .35s ease}
+.page.active{display:block}
+@keyframes show{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h2{font-size:24px}
+p{line-height:1.75}
+.emoji{font-size:58px;margin:12px}
+.btn{
+ background:linear-gradient(120deg,#ff85b9,#e84e98);color:white;
+ padding:13px 22px;border-radius:30px;margin:7px;
+ box-shadow:0 5px 14px #f19ac3
+}
+.btn:disabled{opacity:.5}
+.secondary{background:white;color:#bd5185;border:1px solid #f1bfd6;box-shadow:none}
+video{width:100%;max-height:330px;object-fit:cover;background:#271722;
+ border-radius:20px;margin:10px 0;transform:scaleX(-1)}
+.status{padding:12px;background:#fff2f8;border-radius:14px;
+ font-size:13px;min-height:42px;line-height:1.6}
+.progress{display:flex;gap:5px;margin:15px 0}
+.progress span{height:5px;flex:1;border-radius:9px;background:white}
+.progress .on{background:#f36ca9}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+.memory{padding:22px 5px;background:#fff0f7;border-radius:18px;font-size:32px}
+.memory p{font-size:13px}
+.letter{text-align:left;white-space:pre-line;background:#fff5fa;
+ padding:17px;border-radius:18px;line-height:1.9}
+#lovePhoto{width:100%;max-width:350px;max-height:440px;
+ object-fit:cover;border-radius:24px;border:5px solid #ffc1dc;margin:18px auto}
+#hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+.heart{position:absolute;bottom:-30px;animation:up 8s linear infinite}
+@keyframes up{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+footer{text-align:center;font-size:12px;padding:20px;color:#b16a8a}
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+
+<div class="wrap">
+<header>
+ <div style="font-size:34px">🎀 💗 🎀</div>
+ <h1>Our Little Love Story</h1>
+ <p>Made with love, just for you ♡</p>
+</header>
+
+<div class="progress" id="progress">
+ <span class="on"></span><span></span><span></span><span></span><span></span>
+</div>
+
+<!-- HALAMAN 1 -->
+<section class="page active card" id="p1">
+ <div class="emoji">📸💗</div>
+ <h2>Hai, Sayang!</h2>
+ <p>Ada kejutan kecil yang aku siapkan khusus untuk kamu.</p>
+ <p class="small">Aktifkan kamera, posisikan wajah di tengah, lalu simpan wajahmu untuk membuka kejutan.</p>
+ <video id="video" autoplay muted playsinline></video>
+ <div id="status" class="status">Tekan tombol untuk mengaktifkan kamera.</div>
+ <button class="btn" id="cameraBtn" onclick="openCamera()">Aktifkan Kamera 📷</button>
+ <button class="btn" id="captureBtn" onclick="captureReference()" disabled>Simpan Wajah 💗</button>
+ <button class="btn" id="firstNext" onclick="showPage(2)" disabled>Lanjut →</button>
+ <p class="small">Foto diambil langsung dari kamera. Tidak perlu memilih dari galeri.</p>
+</section>
+
+<!-- HALAMAN 2 -->
+<section class="page card" id="p2">
+ <div class="emoji">🌷</div>
+ <h2>Hal yang Aku Suka dari Kamu</h2>
+ <p>Senyummu, perhatianmu, dan hal-hal kecil yang membuatku bahagia.</p>
+ <div class="gallery">
+  <div class="memory">😊<p>Senyummu</p></div>
+  <div class="memory">💞<p>Perhatianmu</p></div>
+  <div class="memory">🫶<p>Kebaikanmu</p></div>
+  <div class="memory">🌹<p>Kehadiranmu</p></div>
+ </div>
+ <p>Kamu punya cara sederhana untuk membuat hariku lebih indah.</p>
+ <button class="btn" onclick="nextWithFace(3)">Lanjut →</button>
+</section>
+
+<!-- HALAMAN 3 -->
+<section class="page card" id="p3">
+ <div class="emoji">💌</div>
+ <h2>Surat Kecil untuk Kamu</h2>
+ <div class="letter">Hai, sayangku. ❤️
+
+Terima kasih sudah hadir di hidupku. Aku mungkin nggak selalu bisa mengungkapkan perasaanku dengan kata-kata yang indah, tetapi aku ingin kamu tahu bahwa kamu berarti buat aku.
+
+Kalau kamu capek, cerita sama aku, ya. Kalau kamu sedih, jangan merasa harus menghadapi semuanya sendirian.
+
+Aku nggak menjanjikan hubungan kita akan selalu sempurna. Aku cuma ingin kita terus belajar memahami, menjaga kepercayaan, dan saling menghargai.
+
+Jangan lupa jaga diri, jangan lupa bahagia, dan jangan pernah merasa kamu nggak berharga.
+
+Aku bersyukur bisa mengenalmu.
+
+I love you, sayang. 💗</div>
+ <p class="small">Surat sederhana, dengan rasa sayang yang luar biasa.</p>
+ <button class="btn" onclick="nextWithFace(4)">Lanjut →</button>
+</section>
+
+<!-- HALAMAN 4 -->
+<section class="page card" id="p4">
+ <div class="emoji">💐</div>
+ <h2>Terima Kasih Sudah Menjadi Kamu</h2>
+ <p>Kamu adalah salah satu bagian terindah dalam ceritaku.</p>
+ <div style="font-size:48px;margin:24px">💗 🧸 🌸</div>
+ <p>Aku harap setiap kali kamu melihat halaman ini, kamu ingat bahwa ada seseorang yang ingin melihatmu bahagia.</p>
+ <h2>I Love You, Sayang!</h2>
+ <button class="btn" onclick="nextWithFace(5)">Lanjut →</button>
+</section>
+
+<!-- HALAMAN 5: FOTO DARI KAMERA -->
+<section class="page card" id="p5">
+ <div class="emoji">📸💗</div>
+ <h2>Foto Kesayangan Aku</h2>
+ <p>Ini dia orang yang punya tempat spesial di hatiku. ❤️</p>
+ <img id="lovePhoto" alt="Foto dari kamera">
+ <p>Jangan lupa senyum hari ini, ya, sayang! 🌷</p>
+ <p class="small">Satu foto, sejuta alasan untuk tersenyum.</p>
+ <button class="btn secondary" onclick="showPage(1)">Kembali ke Awal ↺</button>
+</section>
+
+<footer>Made with love, just for you ♡</footer>
+</div>
+
+<!-- VERIFIKASI -->
+<div id="gate" style="display:none;position:fixed;inset:0;background:#48152fbf;
+ z-index:5;align-items:center;justify-content:center;padding:15px;overflow:auto">
+ <div class="card" style="width:100%;max-width:420px;margin:auto">
+  <div class="emoji">🔐💗</div>
+  <h2>Verifikasi Wajah</h2>
+  <p class="small">Hadapkan wajah yang sama ke kamera untuk melanjutkan.</p>
+  <video id="verifyVideo" autoplay muted playsinline></video>
+  <div id="verifyStatus" class="status">Siapkan kamera...</div>
+  <button class="btn" id="verifyBtn" onclick="verifyFace()" disabled>Periksa Wajah</button>
+  <button class="btn secondary" onclick="closeGate()">Batal</button>
+ </div>
+</div>
+
+<script>
+const MODEL="https://justadudewhohacks.github.io/face-api.js/models";
+const video=document.getElementById("video");
+const statusBox=document.getElementById("status");
+const captureBtn=document.getElementById("captureBtn");
+const firstNext=document.getElementById("firstNext");
+const gate=document.getElementById("gate");
+const verifyVideo=document.getElementById("verifyVideo");
+const verifyStatus=document.getElementById("verifyStatus");
+const verifyBtn=document.getElementById("verifyBtn");
+
+let stream=null, verifyStream=null, reference=null, capturedPhoto="";
+let modelsLoaded=false, busy=false, destination=2;
+
+async function loadModels(){
+ if(modelsLoaded)return;
+ if(!window.faceapi)throw Error("Pustaka wajah gagal dimuat. Periksa internet.");
+ await Promise.all([
+  faceapi.nets.tinyFaceDetector.loadFromUri(MODEL),
+  faceapi.nets.faceLandmark68Net.loadFromUri(MODEL),
+  faceapi.nets.faceRecognitionNet.loadFromUri(MODEL)
+ ]);
+ modelsLoaded=true;
+}
+
+async function openCamera(){
+ const btn=document.getElementById("cameraBtn");
+ btn.disabled=true;
+ statusBox.textContent="Meminta izin kamera dan memuat model...";
+ try{
+  if(!window.isSecureContext)throw Error("Kamera perlu HTTPS atau localhost. Jangan buka file langsung.");
+  if(!navigator.mediaDevices?.getUserMedia)throw Error("Browser tidak mendukung kamera.");
+  if(!stream){
+   stream=await navigator.mediaDevices.getUserMedia({
+    audio:false,video:{facingMode:"user",width:{ideal:640},height:{ideal:480}}
+   });
+   video.srcObject=stream;
+   await video.play();
+  }
+  await loadModels();
+  statusBox.textContent="Kamera aktif! Posisikan wajah di tengah lalu tekan Simpan Wajah.";
+  captureBtn.disabled=false;
+  btn.textContent="Kamera Aktif ✓";
+ }catch(e){
+  statusBox.textContent=e.message||"Kamera gagal dibuka. Periksa izin kamera dan internet.";
+ }finally{btn.disabled=false}
+}
+
+async function detectFace(el){
+ if(el.readyState<2)throw Error("Kamera belum siap. Tunggu sebentar.");
+ const r=await faceapi.detectSingleFace(el,new faceapi.TinyFaceDetectorOptions({
+  inputSize:320,scoreThreshold:0.5
+ })).withFaceLandmarks().withFaceDescriptor();
+ if(!r)throw Error("Wajah tidak terdeteksi. Hadapkan wajah ke kamera.");
+ return r;
+}
+
+async function captureReference(){
+ if(busy)return;
+ busy=true;captureBtn.disabled=true;
+ try{
+  await loadModels();
+  const result=await detectFace(video);
+  reference=result.descriptor;
+
+  const canvas=document.createElement("canvas");
+  canvas.width=video.videoWidth;
+  canvas.height=video.videoHeight;
+  canvas.getContext("2d").drawImage(video,0,0,canvas.width,canvas.height);
+  capturedPhoto=canvas.toDataURL("image/jpeg",0.9);
+
+  document.getElementById("lovePhoto").src=capturedPhoto;
+  statusBox.textContent="Wajah berhasil disimpan! Sekarang kamu bisa lanjut. 💗";
+  firstNext.disabled=false;
+  captureBtn.textContent="Wajah Tersimpan ✓";
+ }catch(e){
+  statusBox.textContent=e.message||"Gagal mengambil foto.";
+  captureBtn.disabled=false;
+ }finally{busy=false}
+}
+
+function stopMainCamera(){
+ if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}
+ video.srcObject=null;
+}
+
+function showPage(n){
+ if(n===5&&!capturedPhoto){
+  alert("Ambil foto melalui kamera terlebih dahulu.");
+  return;
+ }
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById("p"+n).classList.add("active");
+ document.querySelectorAll("#progress span").forEach((p,i)=>{
+  p.classList.toggle("on",i<n);
+ });
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+async function nextWithFace(n){
+ if(!reference){
+  alert("Aktifkan kamera dan simpan wajah terlebih dahulu.");
+  showPage(1);return;
+ }
+ destination=n;
+ gate.style.display="flex";
+ verifyBtn.disabled=true;
+ verifyStatus.textContent="Membuka kamera verifikasi...";
+ try{
+  await loadModels();
+  if(!window.isSecureContext)throw Error("Gunakan HTTPS atau localhost untuk membuka kamera.");
+  verifyStream=await navigator.mediaDevices.getUserMedia({
+   audio:false,video:{facingMode:"user",width:{ideal:640},height:{ideal:480}}
+  });
+  verifyVideo.srcObject=verifyStream;
+  await verifyVideo.play();
+  verifyStatus.textContent="Kamera siap. Tekan Periksa Wajah.";
+  verifyBtn.disabled=false;
+ }catch(e){
+  verifyStatus.textContent=e.message||"Kamera gagal dibuka. Periksa izin kamera.";
+ }
+}
+
+async function verifyFace(){
+ if(busy||!verifyStream)return;
+ busy=true;verifyBtn.disabled=true;
+ try{
+  const result=await detectFace(verifyVideo);
+  const distance=faceapi.euclideanDistance(reference,result.descriptor);
+  if(distance<0.48){
+   closeGate();
+   showPage(destination);
+  }else{
+   verifyStatus.textContent="Wajah belum cocok. Coba lagi dengan pencahayaan yang lebih baik.";
+  }
+ }catch(e){
+  verifyStatus.textContent=e.message||"Verifikasi gagal. Coba lagi.";
+ }finally{
+  busy=false;
+  if(verifyStream)verifyBtn.disabled=false;
+ }
+}
+
+function closeGate(){
+ if(verifyStream){verifyStream.getTracks().forEach(t=>t.stop());verifyStream=null}
+ verifyVideo.srcObject=null;
+ gate.style.display="none";
+}
+
+const hearts=document.getElementById("hearts");
+for(let i=0;i<20;i++){
+ const h=document.createElement("span");
+ h.className="heart";
+ h.textContent=["💗","💕","♡","🌸"][i%4];
+ h.style.left=Math.random()*100+"%";
+ h.style.animationDelay=Math.random()*8+"s";
+ h.style.animationDuration=(6+Math.random()*6)+"s";
+ h.style.fontSize=(14+Math.random()*15)+"px";
+ hearts.appendChild(h);
+}
+
+window.addEventListener("pagehide",()=>{
+ stopMainCamera();
+ if(verifyStream)verifyStream.getTracks().forEach(t=>t.stop());
+});
+</script>
+</body>
+</html>
